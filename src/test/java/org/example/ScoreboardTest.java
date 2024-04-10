@@ -117,4 +117,10 @@ public class ScoreboardTest {
     public void testUpdateScoreThrowsExceptionWhenMatchDoesNotExist() {
         assertThrows(IllegalArgumentException.class, () -> scoreboard.updateScore("NonExistentHomeTeam", "NonExistentAwayTeam", 1, 1));
     }
+
+    @Test
+    public void testFinishNonexistentMatchThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.finishMatch("Nonexistent", "Match"));
+    }
+
 }

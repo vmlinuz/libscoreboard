@@ -35,7 +35,10 @@ public class Scoreboard {
     }
 
     public void finishMatch(String homeTeam, String awayTeam) {
-        matches.removeIf(match -> match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam));
+        boolean removed = matches.removeIf(match -> match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam));
+        if (!removed) {
+            throw new IllegalArgumentException("Match does not exist or has already been finished.");
+        }
     }
 
     public List<String> getSummary() {
@@ -47,4 +50,3 @@ public class Scoreboard {
                 .collect(Collectors.toList());
     }
 }
-
