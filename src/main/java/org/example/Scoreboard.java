@@ -13,8 +13,15 @@ public class Scoreboard {
     }
 
     public void startMatch(String homeTeam, String awayTeam) {
+        if (homeTeam == null || awayTeam == null || homeTeam.trim().isEmpty() || awayTeam.trim().isEmpty()) {
+            throw new IllegalArgumentException("Team names must be provided and cannot be empty.");
+        }
+        if (matches.stream().anyMatch(match -> match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))) {
+            throw new IllegalArgumentException("Match already exists.");
+        }
         matches.add(new Match(homeTeam, awayTeam));
     }
+
 
     public void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore) {
         matches.stream()

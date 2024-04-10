@@ -3,6 +3,7 @@ package org.example;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
@@ -66,4 +67,41 @@ public class ScoreboardTest {
         assertEquals("HomeTeam1 2 - AwayTeam1 3", summary.get(0));
         assertEquals("HomeTeam2 1 - AwayTeam2 1", summary.get(1));
     }
+
+    @Test
+    public void testStartDuplicateMatchThrowsException() {
+        scoreboard.startMatch("HomeTeam1", "AwayTeam1");
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("HomeTeam1", "AwayTeam1"));
+    }
+
+    @Test
+    public void testStartMatchThrowsExceptionWhenHomeTeamIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch(null, "AwayTeam1"));
+    }
+
+    @Test
+    public void testStartMatchThrowsExceptionWhenAwayTeamIsNull() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("HomeTeam1", null));
+    }
+
+    @Test
+    public void testStartMatchThrowsExceptionWhenHomeTeamIsEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("", "AwayTeam1"));
+    }
+
+    @Test
+    public void testStartMatchThrowsExceptionWhenAwayTeamIsEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("HomeTeam1", ""));
+    }
+
+    @Test
+    public void testStartMatchThrowsExceptionWhenHomeTeamIsBlank() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch(" ", "AwayTeam1"));
+    }
+
+    @Test
+    public void testStartMatchThrowsExceptionWhenAwayTeamIsBlank() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("HomeTeam1", " "));
+    }
+
 }
