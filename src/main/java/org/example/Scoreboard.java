@@ -22,15 +22,16 @@ public class Scoreboard {
         matches.add(new Match(homeTeam, awayTeam));
     }
 
-
     public void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore) {
-        matches.stream()
-                .filter(match -> match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))
+        if (homeScore < 0 || awayScore < 0) {
+            throw new IllegalArgumentException("Scores cannot be negative.");
+        }
+        Match match = matches.stream()
+                .filter(m -> m.getHomeTeam().equals(homeTeam) && m.getAwayTeam().equals(awayTeam))
                 .findFirst()
-                .ifPresent(match -> {
-                    match.setHomeScore(homeScore);
-                    match.setAwayScore(awayScore);
-                });
+                .orElseThrow(() -> new IllegalArgumentException("Match does not exist."));
+        match.setHomeScore(homeScore);
+        match.setAwayScore(awayScore);
     }
 
     public void finishMatch(String homeTeam, String awayTeam) {

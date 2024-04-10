@@ -64,6 +64,7 @@ public class ScoreboardTest {
         scoreboard.updateScore("HomeTeam2", "AwayTeam2", 1, 1);
 
         List<String> summary = scoreboard.getSummary();
+
         assertEquals("HomeTeam1 2 - AwayTeam1 3", summary.get(0));
         assertEquals("HomeTeam2 1 - AwayTeam2 1", summary.get(1));
     }
@@ -71,6 +72,7 @@ public class ScoreboardTest {
     @Test
     public void testStartDuplicateMatchThrowsException() {
         scoreboard.startMatch("HomeTeam1", "AwayTeam1");
+
         assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("HomeTeam1", "AwayTeam1"));
     }
 
@@ -104,4 +106,15 @@ public class ScoreboardTest {
         assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("HomeTeam1", " "));
     }
 
+    @Test
+    public void testUpdateScoreWithNegativeValuesThrowsException() {
+        scoreboard.startMatch("HomeTeam1", "AwayTeam1");
+
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.updateScore("HomeTeam1", "AwayTeam1", -1, 3));
+    }
+
+    @Test
+    public void testUpdateScoreThrowsExceptionWhenMatchDoesNotExist() {
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.updateScore("NonExistentHomeTeam", "NonExistentAwayTeam", 1, 1));
+    }
 }
