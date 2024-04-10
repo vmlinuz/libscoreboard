@@ -44,7 +44,7 @@ public class Scoreboard {
     public List<String> getSummary() {
         return matches.stream()
                 .sorted(Comparator.comparingInt(Match::getTotalScore).reversed()
-                        .thenComparing(Match::getStartTime))
+                        .thenComparing(Match::getStartTime, Comparator.reverseOrder()))
                 .map(match -> match.getHomeTeam() + " " + match.getHomeScore() + " - "
                         + match.getAwayTeam() + " " + match.getAwayScore())
                 .collect(Collectors.toList());

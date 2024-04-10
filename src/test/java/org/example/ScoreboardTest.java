@@ -56,7 +56,7 @@ public class ScoreboardTest {
     }
 
     @Test
-    public void testScoreboardSummary() {
+    public void testScoreboardSummaryIsOrderedByTotalScore() {
         scoreboard.startMatch("HomeTeam1", "AwayTeam1");
         scoreboard.updateScore("HomeTeam1", "AwayTeam1", 2, 3);
 
@@ -67,6 +67,20 @@ public class ScoreboardTest {
 
         assertEquals("HomeTeam1 2 - AwayTeam1 3", summary.get(0));
         assertEquals("HomeTeam2 1 - AwayTeam2 1", summary.get(1));
+    }
+
+    @Test
+    public void testScoreboardSummaryIsOrderedByTheMostRecentMatchIfScoresAreEqual() {
+        scoreboard.startMatch("HomeTeam1", "AwayTeam1");
+        scoreboard.updateScore("HomeTeam1", "AwayTeam1", 2, 3);
+
+        scoreboard.startMatch("HomeTeam2", "AwayTeam2");
+        scoreboard.updateScore("HomeTeam2", "AwayTeam2", 2, 3);
+
+        List<String> summary = scoreboard.getSummary();
+
+        assertEquals("HomeTeam2 2 - AwayTeam2 3", summary.get(0));
+        assertEquals("HomeTeam1 2 - AwayTeam1 3", summary.get(1));
     }
 
     @Test
