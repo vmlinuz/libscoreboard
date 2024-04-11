@@ -80,6 +80,7 @@ To integrate the library into another Maven project, you can install it to your 
 - **Scalability**: The library is designed for simplicity and is best suited for small to medium-sized applications. For large-scale applications with high throughput, a more robust and scalable solution may be needed.
 - **Persistence**: The library uses an in-memory data store and does not support persistence. If the application is shut down, all data will be lost.
 - **Logging**: The library does not include logging functionality. In a production environment, logging would be essential for monitoring and troubleshooting the application.
+- **Exception Handling**: In the test cases, exceptions are being thrown and caught, but there's no custom exception handling. In future custom exceptions, that extend from RuntimeException or Exception to provide more specific error messages, can be created.
 - **Internationalization**: The library does not support internationalization or localization. In a production environment, it would be important to provide support for multiple languages and regions.
 - **Performance**: The library is designed for simplicity and ease of use, rather than performance optimization. In a production environment, it would be important to profile the application and optimize performance where necessary.
 
