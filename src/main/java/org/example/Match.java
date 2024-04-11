@@ -10,6 +10,8 @@ public class Match {
     private final LocalDateTime startTime;
 
     public Match(String homeTeam, String awayTeam) {
+        ValidationUtils.validateTeamName(homeTeam);
+        ValidationUtils.validateTeamName(awayTeam);
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = 0;
@@ -31,6 +33,7 @@ public class Match {
     }
 
     public void setHomeScore(int homeScore) {
+        ValidationUtils.validateScore(homeScore);
         this.homeScore = homeScore;
     }
 
@@ -39,6 +42,7 @@ public class Match {
     }
 
     public void setAwayScore(int awayScore) {
+        ValidationUtils.validateScore(awayScore);
         this.awayScore = awayScore;
     }
 
