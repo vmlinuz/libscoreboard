@@ -7,21 +7,29 @@ public class ValidationUtilsTest {
 
     @Test
     public void testValidateTeamNameThrowsExceptionWhenNull() {
-        assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateTeamName(null));
+        String teamName = null;
+
+        assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateTeamName(teamName), "Validating a null team name should throw an exception");
     }
 
     @Test
     public void testValidateTeamNameThrowsExceptionWhenEmpty() {
-        assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateTeamName(""));
+        String teamName = "";
+
+        assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateTeamName(teamName), "Validating an empty team name should throw an exception");
     }
 
     @Test
     public void testValidateTeamNameThrowsExceptionWhenBlank() {
-        assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateTeamName(" "));
+        String teamName = " ";
+
+        assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateTeamName(teamName), "Validating a blank team name should throw an exception");
     }
 
     @Test
     public void testValidateScoreThrowsExceptionWhenNegative() {
-        assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateScore(-1));
+        int score = -1;
+
+        assertThrows(IllegalArgumentException.class, () -> ValidationUtils.validateScore(score), "Validating a negative score should throw an exception");
     }
 }
