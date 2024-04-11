@@ -16,7 +16,7 @@ public class ScoreboardTest {
     }
 
     @Test
-    public void testScoreboardStartMatch() {
+    public void testScoreboardStartMatchIncreasesSummarySizeByOne() {
         String homeTeam = "HomeTeam1";
         String awayTeam = "AwayTeam1";
 
@@ -40,7 +40,7 @@ public class ScoreboardTest {
     }
 
     @Test
-    public void testScoreboardUpdateScore() {
+    public void testScoreboardUpdateScoreReflectsInTheMatchSummary() {
         String homeTeam = "HomeTeam1";
         String awayTeam = "AwayTeam1";
         int homeScore = 2;
@@ -55,7 +55,7 @@ public class ScoreboardTest {
     }
 
     @Test
-    public void testScoreboardFinishMatch() {
+    public void testScoreboardFinishMatchDecreasesSummarySizeByOne() {
         String homeTeam = "HomeTeam1";
         String awayTeam = "AwayTeam1";
         scoreboard.startMatch(homeTeam, awayTeam);
