@@ -2,6 +2,15 @@
 
 This library provides a simple in-memory solution for tracking live football World Cup matches and their scores. It supports starting new matches, updating scores, finishing matches, and getting a summary of matches in progress.
 
+## Table of Contents
+1. [Features](#features)
+2. [Setup](#setup)
+3. [Usage](#usage)
+4. [Running the Tests](#running-the-tests)
+5. [Integration](#integration)
+6. [Assumptions and Limitations](#assumptions-and-limitations)
+7. [License](#license)
+
 ## Features
 
 1. **Start a new match**: Starts a new match with the given home and away teams, and an initial score of 0 - 0.
