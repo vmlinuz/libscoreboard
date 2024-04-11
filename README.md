@@ -81,7 +81,6 @@ To integrate the library into another Maven project, you can install it to your 
 - **Persistence**: The library uses an in-memory data store and does not support persistence. If the application is shut down, all data will be lost.
 - **Error Handling**: The library does not provide detailed error handling or exception messages. In a production environment, it would be important to handle errors more gracefully and provide meaningful feedback to the user.
 - **Logging**: The library does not include logging functionality. In a production environment, logging would be essential for monitoring and troubleshooting the application.
-- **Input Validation**: The library does not perform extensive input validation. In a production environment, it would be important to validate user input to prevent invalid data from being processed.
 - **Internationalization**: The library does not support internationalization or localization. In a production environment, it would be important to provide support for multiple languages and regions.
 - **Performance**: The library is designed for simplicity and ease of use, rather than performance optimization. In a production environment, it would be important to profile the application and optimize performance where necessary.
 
