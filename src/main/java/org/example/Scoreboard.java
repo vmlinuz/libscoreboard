@@ -51,4 +51,12 @@ public class Scoreboard {
                         + match.getAwayTeam() + " " + match.getAwayScore())
                 .collect(Collectors.toList());
     }
+
+    public int getScoreForATeam(String team) {
+        ValidationUtils.validateTeamName(team);
+        return matches.stream()
+                .filter(match -> match.getHomeTeam().equals(team) || match.getAwayTeam().equals(team))
+                .mapToInt(match -> match.getHomeTeam().equals(team) ? match.getHomeScore() : match.getAwayScore())
+                .sum();
+    }
 }

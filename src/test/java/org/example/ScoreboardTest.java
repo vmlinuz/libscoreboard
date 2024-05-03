@@ -158,4 +158,20 @@ public class ScoreboardTest {
     public void testFinishNonexistentMatchThrowsException() {
         assertThrows(IllegalArgumentException.class, () -> scoreboard.finishMatch("Nonexistent", "Match"), "Finishing non-existent match should throw an exception");
     }
+
+    //TODO: Add following tests:
+    // - test that getScoreForATeam return 0 if a team hasn't made any goal
+    // - test that getScoreForATeam throws an exception if the team name is null
+    // - test that getScoreForATeam throws an exception if the team name is empty or blank
+    // - test that getScoreForATeam throws an exception if the team name doesn't exist on the scoreboard
+
+    @Test
+    public void testGetScoreForATeamReturnsCorrectScore() {
+        scoreboard.startMatch("HomeTeam1", "AwayTeam1");
+        scoreboard.updateScore("HomeTeam1", "AwayTeam1", 12, 3);
+
+        int expectedScore = 12;
+        int actualScore = scoreboard.getScoreForATeam("HomeTeam1");
+        assertEquals(expectedScore, actualScore, "getScoreForATeam should return the correct score for a team");
+    }
 }
